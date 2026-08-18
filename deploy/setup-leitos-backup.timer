@@ -1,0 +1,11 @@
+[Unit]
+Description=Agenda o backup diário do Setup de Leitos
+
+[Timer]
+OnCalendar=*-*-* 02:00:00
+RandomizedDelaySec=10m
+Persistent=true
+Unit=setup-leitos-backup.service
+
+[Install]
+WantedBy=timers.target

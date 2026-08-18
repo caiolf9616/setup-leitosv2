@@ -1,0 +1,535 @@
+:root {
+    --page-bg: #0d797b;
+    --main-bg: #178b83;
+    --panel-dark: #0c6266;
+    --cyan: #20c4ad;
+    --green: #27d46f;
+    --text: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    background: var(--page-bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: minmax(0, 68fr) minmax(390px, 32fr);
+    gap: 20px;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px 16px 26px;
+    background: linear-gradient(120deg, #087072 0%, #149399 65%, #1495a0 100%);
+}
+
+/* ===== PAINEL PRINCIPAL ===== */
+.main-panel {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 30px;
+    background: var(--main-bg);
+    box-shadow: 0 18px 45px rgba(0, 45, 48, .34);
+    transition: background .35s ease;
+}
+
+.main-panel::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(33, 216, 180, .12), transparent 45%);
+}
+
+.main-panel.status-apto {
+    background: linear-gradient(135deg, #16875f 0%, #0d6b56 100%);
+}
+
+.main-panel.status-desocupado {
+    background: linear-gradient(135deg, #148c87 0%, #146e73 100%);
+}
+
+.main-panel.status-alta {
+    background: linear-gradient(135deg, #1976b9 0%, #154e87 100%);
+}
+
+.main-panel.status-aguardando {
+    background: var(--main-bg);
+}
+
+.main-panel.novo .main-content {
+    animation: call-in .5s ease-out;
+}
+
+@keyframes call-in {
+    from { opacity: 0; transform: scale(.86); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.hospital-logo {
+    position: absolute;
+    top: 28px;
+    left: 30px;
+    z-index: 2;
+}
+
+.hospital-logo img {
+    display: block;
+    width: clamp(150px, 10vw, 205px);
+    height: auto;
+}
+
+.main-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: min(82%, 960px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.unidade-display {
+    max-width: 100%;
+    margin-bottom: 28px;
+    overflow-wrap: anywhere;
+    color: #fff;
+    font-size: clamp(62px, 5.7vw, 112px);
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    text-shadow: 0 5px 18px rgba(0, 0, 0, .22);
+}
+
+.leito-display {
+    max-width: 100%;
+    margin-bottom: 38px;
+    color: #34d7c1;
+    font-size: clamp(72px, 6.5vw, 126px);
+    font-weight: 800;
+    line-height: 1;
+    text-shadow: 0 5px 18px rgba(0, 0, 0, .2);
+}
+
+.status-display {
+    display: inline-flex;
+    min-width: min(550px, 88%);
+    min-height: 92px;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 48px;
+    border: 4px solid currentColor;
+    border-radius: 20px;
+    color: #31d875;
+    background: rgba(22, 142, 120, .28);
+    font-size: clamp(38px, 3vw, 58px);
+    font-weight: 800;
+    letter-spacing: .02em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.main-panel.status-apto .leito-display,
+.main-panel.status-apto .status-display {
+    color: #71f2b1;
+}
+
+.main-panel.status-desocupado .leito-display,
+.main-panel.status-desocupado .status-display {
+    color: #78e5eb;
+}
+
+.main-panel.status-alta .leito-display,
+.main-panel.status-alta .status-display {
+    color: #b7ddff;
+}
+
+.main-panel.status-aguardando .main-content {
+    transform: translateY(30px);
+}
+
+.main-panel.status-aguardando .unidade-display {
+    margin-bottom: 72px;
+    color: #fff;
+    font-size: clamp(58px, 4vw, 78px);
+    letter-spacing: .08em;
+}
+
+.main-panel.status-aguardando .leito-display {
+    margin-bottom: 60px;
+    color: #20c4ad;
+    font-size: clamp(55px, 3.8vw, 74px);
+    letter-spacing: .08em;
+}
+
+.main-panel.status-aguardando .status-display {
+    min-width: min(555px, 78%);
+    color: #31d875;
+    border-color: #31d875;
+    background: rgba(24, 153, 128, .36);
+}
+
+.update-indicator {
+    position: absolute;
+    right: 30px;
+    bottom: 28px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: rgba(255, 255, 255, .68);
+    font-size: 16px;
+}
+
+.pulse-dot {
+    width: 13px;
+    height: 13px;
+    border: 3px solid rgba(255, 255, 255, .12);
+    border-radius: 50%;
+    background: #2bd26e;
+    box-shadow: 0 0 0 4px rgba(43, 210, 110, .2);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 3px rgba(43, 210, 110, .35); }
+    70% { box-shadow: 0 0 0 11px rgba(43, 210, 110, 0); }
+    100% { box-shadow: 0 0 0 3px rgba(43, 210, 110, 0); }
+}
+
+/* ===== LATERAL ===== */
+.side-panel {
+    display: grid;
+    min-width: 0;
+    min-height: 0;
+    grid-template-rows: minmax(0, 1fr) 140px;
+    gap: 14px;
+}
+
+.queue-columns {
+    display: grid;
+    min-width: 0;
+    min-height: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.queue-column {
+    display: grid;
+    min-width: 0;
+    min-height: 0;
+    grid-template-rows: 58px minmax(0, 1fr);
+    gap: 10px;
+}
+
+.fila-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: rgba(4, 68, 72, .73);
+    color: #fff;
+    padding: 7px;
+    font-size: clamp(13px, .82vw, 17px);
+    font-weight: 800;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+}
+
+.fila-title i {
+    font-size: 18px;
+}
+
+.fila-container {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    gap: 10px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 0 8px 0 5px;
+    border-radius: 12px;
+    background: rgba(5, 101, 105, .28);
+}
+
+.fila-item {
+    flex: 0 0 auto;
+    min-height: 116px;
+    overflow: hidden;
+    padding: 13px 10px 11px;
+    border-left: 7px solid;
+    border-radius: 13px;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(0, 38, 40, .24);
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity .26s ease, transform .26s ease;
+}
+
+.fila-container.changing-group .fila-item {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fila-item { transition-duration: .01ms; }
+}
+
+.fila-item.status-apto {
+    border-left-color: #70efaa;
+    background: #087553;
+}
+
+.fila-item.status-desocupado {
+    border-left-color: #8ce8df;
+    background: #2c686d;
+}
+
+.fila-item.status-alta {
+    border-left-color: #8cc9ff;
+    background: #18578c;
+}
+
+.fila-item-rodape {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.fila-item-unidade {
+    min-width: 0;
+    overflow: hidden;
+    color: #fff;
+    font-size: clamp(14px, .85vw, 18px);
+    font-weight: 800;
+    letter-spacing: .02em;
+    line-height: 1.1;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.fila-item-leito {
+    margin: 8px 0 6px;
+    color: #fff;
+    font-size: clamp(24px, 1.45vw, 31px);
+    font-weight: 800;
+    line-height: 1;
+}
+
+.fila-item-status {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #073940;
+    background: #9ce9e2;
+    font-size: clamp(10px, .62vw, 13px);
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.fila-item.status-apto .fila-item-status {
+    background: #60eaa0;
+}
+
+.fila-item.status-alta .fila-item-status {
+    background: #9dccf5;
+}
+
+.fila-item-status i {
+    font-size: 1em;
+}
+
+.fila-item-detalhe {
+    color: rgba(255, 255, 255, .9);
+    font-size: clamp(10px, .58vw, 12px);
+    font-weight: 700;
+}
+
+.fila-empty {
+    display: grid;
+    min-height: 100%;
+    place-items: center;
+    padding: 24px;
+    color: rgba(255, 255, 255, .72);
+    font-size: 18px;
+    text-align: center;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(4, 68, 72, .72);
+    color: #fff;
+    text-align: center;
+}
+
+.info-box-title {
+    margin-bottom: 8px;
+    color: #21c5b0;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.info-box-title i {
+    margin-right: 4px;
+}
+
+.info-box-content {
+    color: rgba(255, 255, 255, .9);
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+/* ===== TVs MENORES ===== */
+@media (max-width: 1500px), (max-height: 850px) {
+    .container {
+        grid-template-columns: minmax(0, 67fr) minmax(350px, 33fr);
+        gap: 14px;
+        padding: 14px;
+    }
+
+    .main-panel {
+        border-radius: 24px;
+    }
+
+    .hospital-logo {
+        top: 20px;
+        left: 22px;
+    }
+
+    .side-panel {
+        grid-template-rows: minmax(0, 1fr) 118px;
+        gap: 10px;
+    }
+
+    .queue-column { grid-template-rows: 50px minmax(0, 1fr); }
+
+    .fila-item {
+        min-height: 112px;
+        padding: 12px 14px 11px;
+        border-left-width: 9px;
+    }
+
+    .fila-item-leito {
+        margin: 6px 0 4px;
+    }
+
+    .info-box-title {
+        margin-bottom: 4px;
+        font-size: 14px;
+    }
+
+    .info-box-content {
+        font-size: 10px;
+    }
+}
+
+/* ===== TABLET E CELULAR ===== */
+@media (max-width: 900px) {
+    html,
+    body {
+        height: auto;
+        min-height: 100%;
+    }
+
+    body {
+        overflow: auto;
+    }
+
+    .container {
+        display: flex;
+        min-height: 100vh;
+        height: auto;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .main-panel {
+        min-height: 58vh;
+    }
+
+    .hospital-logo img {
+        width: 125px;
+    }
+
+    .main-content {
+        width: 92%;
+        padding-top: 55px;
+    }
+
+    .unidade-display {
+        margin-bottom: 18px;
+        font-size: clamp(42px, 10vw, 68px);
+    }
+
+    .leito-display {
+        margin-bottom: 25px;
+        font-size: clamp(52px, 13vw, 82px);
+    }
+
+    .status-display {
+        min-width: min(460px, 92%);
+        min-height: 68px;
+        padding: 12px 22px;
+        font-size: clamp(28px, 7vw, 42px);
+    }
+
+    .main-panel.status-aguardando .unidade-display,
+    .main-panel.status-aguardando .leito-display {
+        margin-bottom: 30px;
+    }
+
+    .side-panel {
+        display: grid;
+        min-height: 620px;
+        grid-template-rows: 420px 130px;
+    }
+
+    .fila-container {
+        padding-right: 10px;
+    }
+
+    .fila-item {
+        min-height: 122px;
+    }
+
+    .fila-item-unidade {
+        font-size: 21px;
+    }
+
+    .fila-item-leito {
+        font-size: 36px;
+    }
+
+    .update-indicator {
+        right: 18px;
+        bottom: 18px;
+    }
+}

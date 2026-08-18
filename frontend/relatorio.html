@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <title>Relatório de leitos</title>
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/sidebar.css?v=2.3.0">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/relatorio.css?v=2.6.0">
+    <link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css">
+</head>
+
+<body>
+    <div id="sidebar" class="no-print"></div>
+    <div class="main-content">
+        <div id="header" class="no-print"></div>
+        <main class="report-page report-times-page">
+            <section class="page-heading">
+                <div>
+                    <p class="eyebrow">Visão operacional</p>
+                    <h1>Relatório de leitos</h1>
+                    <p>Consulte o status atual e gere uma cópia em PDF para compartilhamento.</p>
+                </div><button id="printReport" class="primary-button no-print" type="button" disabled><i
+                        class="fa-solid fa-file-pdf"></i> Salvar como PDF</button>
+            </section>
+            <section class="panel filters no-print">
+                <label>Unidade<select id="reportUnit">
+                        <option value="">Todas as unidades</option>
+                    </select></label>
+                <label>Status<select id="statusFilter">
+                        <option value="">Todos os status</option>
+                        <option value="alta">Alta</option>
+                        <option value="desocupado">Desocupado</option>
+                        <option value="apto">Apto</option>
+                        <option value="ocupado">Ocupado</option>
+                        <option value="sem_status">Sem status</option>
+                    </select></label>
+                <div class="filter-actions">
+                    <button id="applyFilters" class="primary-button" type="button">Aplicar filtros</button>
+                    <button id="clearFilters" class="secondary-button" type="button">Limpar filtros</button>
+                </div>
+            </section>
+            <p class="filters-hint">Os filtros atualizam o relatório em tempo real e o conteúdo abaixo pode ser exportado para PDF.</p>
+            <section class="summary-cards">
+                <article><span>Total</span><strong id="totalCount">—</strong></article>
+                <article class="apto"><span>Aptos</span><strong id="aptoCount">—</strong></article>
+                <article class="ocupado"><span>Ocupados</span><strong id="ocupadoCount">—</strong></article>
+                <article class="blocked"><span>Bloqueados</span><strong id="blockedCount">—</strong></article>
+            </section>
+            <section class="panel report-table-panel">
+                <div class="table-heading">
+                    <div>
+                        <h2>Posição atual</h2>
+                        <p id="reportMeta">Carregando dados…</p>
+                    </div><span id="generatedAt"></span>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Enfermaria</th>
+                                <th>Leito</th>
+                                <th>Status</th>
+                                <th>Última atualização</th>
+                                <th>Situação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportRows"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+        <div id="footer" class="no-print"></div>
+    </div>
+    <div class="version no-print">v2.5.0</div>
+    <script src="./assets/js/auth.js?v=2.5.0"></script>
+    <script src="./assets/js/layout.js?v=2.4.0"></script>
+    <script src="./assets/js/sidebar.js"></script>
+    <script src="./assets/js/relatorio-tempo.js?v=2.6.0"></script>
+</body>
+
+</html>

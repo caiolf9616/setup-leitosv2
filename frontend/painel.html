@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <title>Painel de Leitos - Hospital de Messejana</title>
+    <link rel="stylesheet" href="/assets/css/painel.css?v=3.4.0">
+    <link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- PAINEL PRINCIPAL -->
+        <div class="main-panel" id="mainPanel">
+            <div class="hospital-logo">
+                <img src="/img/logo-hm.png" alt="Hospital HM">
+            </div>
+
+            <div class="main-content">
+                <div class="unidade-display" id="displayUnidade">--</div>
+
+                <div class="leito-display" id="displayLeito">--</div>
+
+                <div class="status-display" id="displayStatus">Aguardando...</div>
+            </div>
+
+            <div class="update-indicator">
+                <div class="pulse-dot"></div>
+                <span class="update-time" id="updateTime">Agora</span>
+            </div>
+        </div>
+
+        <!-- PAINEL LATERAL -->
+        <div class="side-panel">
+            <div class="queue-columns">
+                <section class="queue-column">
+                    <div class="fila-title"><i class="fa-solid fa-circle-check"></i> Leitos disponíveis</div>
+                    <div class="fila-container" id="filaAptos"><div class="fila-empty">Carregando...</div></div>
+                </section>
+                <section class="queue-column">
+                    <div class="fila-title"><i class="fa-solid fa-arrow-right-from-bracket"></i> Alta e desocupados</div>
+                    <div class="fila-container" id="filaAltaDesocupados"><div class="fila-empty">Carregando...</div></div>
+                </section>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-title"><i class="fa-solid fa-square-info"></i> Informações</div>
+                <div class="info-box-content">
+                    <div>Apto, Desocupado e Alta</div>
+                    <strong>Desenvolvido por NUTIC</strong>
+                    <div>Atualizado automaticamente</div>
+                    <div id="horaAtual">
+                        <strong>--:--</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/painel_display.js?v=3.4.0"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <title>Indicadores | Setup de Leitos</title>
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/sidebar.css?v=2.3.0">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/indicadores.css?v=2.2.2">
+    <link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css">
+</head>
+<body>
+    <div id="sidebar"></div>
+    <div class="main-content">
+        <div id="header"></div>
+        <main class="page-content indicators-page">
+            <section class="page-heading">
+                <div>
+                    <p class="eyebrow">Indicadores assistenciais</p>
+                    <h1>Visão operacional dos leitos</h1>
+                    <p>Acompanhe a situação atual e o tempo acumulado em cada status.</p>
+                </div>
+                <div class="period-filter">
+                    <label>Período
+                        <select id="indicatorPeriod">
+                            <option value="7">Últimos 7 dias</option>
+                            <option value="30" selected>Últimos 30 dias</option>
+                            <option value="90">Últimos 90 dias</option>
+                        </select>
+                    </label>
+                    <button id="refreshIndicators" class="refresh-button" type="button">
+                        <i class="fa-solid fa-rotate"></i> Atualizar
+                    </button>
+                </div>
+            </section>
+
+            <p id="indicatorMessage" class="indicator-message" role="status">Carregando indicadores…</p>
+
+            <section class="metric-grid" aria-label="Resumo dos indicadores">
+                <article class="metric-card">
+                    <span class="metric-icon occupied"><i class="fa-solid fa-bed"></i></span>
+                    <div><span>Ocupação atual</span><strong id="currentOccupancy">—</strong><small id="occupiedDetail">—</small></div>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-icon available"><i class="fa-solid fa-circle-check"></i></span>
+                    <div><span>Leitos aptos agora</span><strong id="availableNow">—</strong><small>Disponíveis no painel</small></div>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-icon monitored"><i class="fa-solid fa-signal"></i></span>
+                    <div><span>Cobertura de status</span><strong id="monitoringCoverage">—</strong><small id="monitoredDetail">—</small></div>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-icon period"><i class="fa-solid fa-clock"></i></span>
+                    <div><span>Tempo monitorado</span><strong id="trackedTime">—</strong><small>No período selecionado</small></div>
+                </article>
+            </section>
+
+            <section class="indicator-grid">
+                <article class="indicator-panel">
+                    <div class="panel-heading">
+                        <div><h2>Situação atual</h2><p>Distribuição dos leitos ativos por último status.</p></div>
+                        <strong id="activeBedsTotal">— leitos</strong>
+                    </div>
+                    <div id="currentStatusBars" class="status-bars"></div>
+                </article>
+
+                <article class="indicator-panel">
+                    <div class="panel-heading">
+                        <div><h2>Tempo por status</h2><p>Participação no período selecionado.</p></div>
+                    </div>
+                    <div id="durationBars" class="status-bars"></div>
+                </article>
+            </section>
+
+            <section class="indicator-panel unit-panel">
+                <div class="panel-heading">
+                    <div><h2>Visão por unidade</h2><p>Ocupação calculada sobre todos os leitos ativos; a coluna Monitorados mostra a cobertura de status.</p></div>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Unidade</th><th>Leitos ativos</th><th>Monitorados</th><th>Ocupados</th><th>Aptos</th><th>Ocupação</th></tr></thead>
+                        <tbody id="unitIndicatorRows"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+        <div id="footer"></div>
+    </div>
+    <script src="./assets/js/auth.js?v=2.5.0"></script>
+    <script src="./assets/js/layout.js?v=2.4.0"></script>
+    <script src="./assets/js/sidebar.js"></script>
+    <script src="./assets/js/indicadores.js?v=2.2.2"></script>
+</body>
+</html>

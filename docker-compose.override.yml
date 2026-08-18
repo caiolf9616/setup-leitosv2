@@ -1,0 +1,15 @@
+services:
+  db:
+    # Acesso local para clientes como DBeaver; nao expoe o PostgreSQL na rede.
+    ports:
+      - "127.0.0.1:5433:5432"
+
+  app:
+    ports:
+      - "127.0.0.1:8002:8000"
+
+  # A VM usa o Apache do host nas portas 80/443. Este perfil impede que um
+  # `docker compose up -d` comum tente iniciar o Nginx incluído no projeto.
+  proxy:
+    profiles:
+      - nginx-disabled

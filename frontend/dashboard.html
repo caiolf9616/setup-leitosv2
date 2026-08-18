@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="./assets/css/app.css">
+
+<link rel="stylesheet" href="./assets/css/sidebar.css?v=2.3.0">
+
+<link rel="stylesheet" href="./assets/css/header.css">
+
+<link rel="stylesheet" href="./assets/css/dashboard.css?v=2.4.0">
+
+
+<link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css">
+
+</head>
+
+<body>
+
+<div id="sidebar"></div>
+
+<div class="main-content">
+
+    <div id="header"></div>
+
+    <main class="dashboard">
+
+    <section class="cards">
+
+        <div class="card interditado">
+            <div class="card-info">
+                <h3>Alta / Transferência</h3>
+                <span id="altas">—</span>
+            </div>
+
+            <i class="fa-solid fa-bed"></i>
+        </div>
+
+        <div class="card limpeza">
+            <div class="card-info">
+                <h3>Desocupados</h3>
+                <span id="desocupados">—</span>
+            </div>
+
+            <i class="fa-solid fa-user-injured"></i>
+        </div>
+
+        <div class="card livre">
+            <div class="card-info">
+                <h3>Aptos</h3>
+                <span id="aptos">—</span>
+            </div>
+
+            <i class="fa-solid fa-pump-soap"></i>
+        </div>
+
+        <div class="card ocupado">
+            <div class="card-info">
+                <h3>Ocupados</h3>
+                <span id="ocupados">—</span>
+            </div>
+
+            <i class="fa-solid fa-ban"></i>
+        </div>
+
+    </section>
+
+
+    <section class="bottom-grid">
+
+        <div class="panel">
+
+            <h2>Últimas Atualizações</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Hora</th>
+                        <th>Leito</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="ultimasAtualizacoes">
+
+                    <tr>
+                        <td>09:42</td>
+                        <td>UCC-01.03</td>
+                        <td><span class="badge livre">Livre</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>09:38</td>
+                        <td>B-205</td>
+                        <td><span class="badge ocupado">Ocupado</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>09:25</td>
+                        <td>D-114</td>
+                        <td><span class="badge limpeza">Higienização</span></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="panel">
+
+            <h2>Resumo</h2>
+
+            <div class="resumo">
+
+                <p><strong>Total de Leitos:</strong> 318</p>
+
+                <p><strong>Unidades:</strong> —</p>
+
+                <p><strong>Sem status:</strong> —</p>
+
+                <p><strong>Taxa de Ocupação:</strong> 87%</p>
+
+                <p><strong>Última Atualização:</strong> 09:42</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="version">v2.1.0</div>
+
+</main>
+
+    <div id="footer"></div>
+
+</div>
+
+<script src="./assets/js/auth.js?v=2.5.0"></script>
+
+<script src="./assets/js/layout.js?v=2.4.0"></script>
+
+<script src="./assets/js/dashboard-live.js?v=2.2.0"></script>
+
+<script src="./assets/js/sidebar.js"></script>
+
+</body>
+
+</html>

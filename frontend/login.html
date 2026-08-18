@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <title>Controle de Leitos - Login</title>
+
+    <link rel="stylesheet" href="./assets/css/login.css?v=2.4.0">
+
+    <link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css">
+</head>
+
+<body>
+
+    <main class="login-container">
+
+        <div class="login-card">
+
+            <img class="logo" src="/img/logo-hm.png" alt="Hospital de Messejana">
+
+            <h1>Controle de Leitos</h1>
+
+            <p class="subtitle">
+                Sistema de Gerenciamento Hospitalar
+            </p>
+
+            <form id="login-form">
+
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Login pessoal"
+                        autocomplete="username"
+                        required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Senha"
+                        autocomplete="current-password"
+                        required>
+                </div>
+
+                <p id="login-error" class="login-error" hidden></p>
+
+                <button type="submit" id="login-button">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <span id="login-button-text">Entrar</span>
+                </button>
+
+            </form>
+
+            <div class="login-links">
+                <button type="button" class="link-button" id="forgotPassword">Esqueci minha senha</button>
+                <a href="/painel" target="_blank" rel="noopener noreferrer">Ver painel de chamada</a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="government-logo">
+        <img src="./img/sesa-ceara.png" alt="Governo do Ceará">
+    </div>
+
+     <div class="version">v2.3.0</div>
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div class="footer-right">
+                <p>© 2026 <strong>Controle de Leitos</strong></p>
+                <p>Desenvolvido por <strong>NUTIC</strong></p>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <dialog id="forgotDialog" class="help-dialog">
+        <h2>Redefinição de senha</h2>
+        <p>Procure o coordenador responsável pela sua unidade. Ele poderá gerar uma senha temporária para seu próximo acesso.</p>
+        <p>Por segurança, senhas antigas não podem ser consultadas e nunca devem ser compartilhadas.</p>
+        <button type="button" id="closeForgotDialog">Entendi</button>
+    </dialog>
+
+    <script src="./assets/js/login.js?v=2.3.1"></script>
+
+</body>
+
+</html>

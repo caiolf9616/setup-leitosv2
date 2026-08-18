@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <title>Gerenciamento de usuários</title>
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/sidebar.css?v=2.3.0">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/usuarios.css?v=2.2.0">
+    <link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css">
+</head>
+<body>
+    <div id="sidebar"></div>
+    <div class="main-content">
+        <div id="header"></div>
+        <main class="users-page">
+            <section class="page-heading">
+                <div>
+                    <p class="eyebrow">Controle de acesso</p>
+                    <h1>Usuários</h1>
+                    <p>Cadastre contas individuais e defina a unidade de atuação.</p>
+                </div>
+            </section>
+            <div id="feedback" class="feedback" hidden></div>
+            <section class="panel">
+                <h2>Novo usuário</h2>
+                <form id="userForm" class="user-form">
+                    <label>Nome completo<input id="fullName" required></label>
+                    <label>Login<input id="username" required minlength="3" autocomplete="off"></label>
+                    <label>Senha inicial<input id="password" type="password" required minlength="8" autocomplete="new-password" aria-describedby="passwordHelp" placeholder="Mínimo de 8 caracteres,com letra e número."></label>
+                    <label>Vínculo<select id="employmentType" required></select></label>
+                    <label>Unidade<select id="unitGroup" required><option value="">Selecione</option></select></label>
+                    <button class="primary-button" type="submit"><i class="fa-solid fa-user-plus"></i> Cadastrar</button>
+                </form>
+            </section>
+            <section class="panel">
+                <div class="list-heading"><div><h2>Contas cadastradas</h2><p id="userCount">Carregando…</p></div><input id="userSearch" type="search" placeholder="Buscar nome, login ou unidade"></div>
+                <div class="table-wrap"><table><thead><tr><th>Profissional</th><th>Login</th><th>Unidade</th><th>Vínculo</th><th>Status</th><th>Ações</th></tr></thead><tbody id="userRows"></tbody></table></div>
+            </section>
+            <section class="panel">
+                <div class="list-heading"><div><h2>Auditoria recente</h2><p>Alterações de acesso e segurança</p></div></div>
+                <div class="table-wrap"><table><thead><tr><th>Data</th><th>Responsável</th><th>Ação</th><th>Usuário</th><th>Detalhes</th></tr></thead><tbody id="auditRows"></tbody></table></div>
+            </section>
+        </main>
+        <div id="footer"></div>
+    </div>
+    <div class="version">v2.3.0</div>
+    <dialog id="securityDialog" class="security-dialog">
+        <form id="securityForm">
+            <h2 id="securityTitle"></h2>
+            <p id="securityDescription"></p>
+            <div id="replacementFields" hidden>
+                <label>Nome completo<input id="replacementName" autocomplete="name"></label>
+                <label>Login<input id="replacementUsername" autocomplete="off"></label>
+                <label class="checkbox-field"><input id="deactivateSource" type="checkbox" checked> Desativar a conta anterior</label>
+            </div>
+            <label>Senha temporária<input id="temporaryPassword" type="password" minlength="8" autocomplete="new-password" required></label>
+            <small>Use pelo menos 8 caracteres, com letra e número.</small>
+            <div class="dialog-actions">
+                <button type="button" class="action-button" id="cancelSecurityDialog">Cancelar</button>
+                <button type="submit" class="primary-button">Confirmar</button>
+            </div>
+        </form>
+    </dialog>
+    <script src="./assets/js/auth.js?v=2.5.0"></script>
+    <script src="./assets/js/layout.js?v=2.4.0"></script>
+    <script src="./assets/js/sidebar.js"></script>
+    <script src="./assets/js/usuarios.js?v=2.4.0"></script>
+</body>
+</html>

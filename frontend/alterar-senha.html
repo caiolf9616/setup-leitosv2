@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <title>Definir nova senha</title>
+    <link rel="stylesheet" href="/assets/css/login.css">
+</head>
+<body>
+    <main class="login-container">
+        <section class="login-card">
+            <img class="logo" src="/img/logo-hm.png" alt="Hospital de Messejana">
+            <h1>Crie sua senha pessoal</h1>
+            <p class="subtitle">A senha recebida era temporária. Defina uma nova senha para continuar.</p>
+            <form id="changePasswordForm">
+                <div class="input-group"><input id="newPassword" type="password" minlength="8" autocomplete="new-password" placeholder="Nova senha" required></div>
+                <div class="input-group"><input id="confirmPassword" type="password" minlength="8" autocomplete="new-password" placeholder="Confirme a nova senha" required></div>
+                <p id="passwordMessage" class="login-error" hidden></p>
+                <button type="submit">Salvar nova senha</button>
+            </form>
+            <p class="subtitle" style="margin:18px 0 0">Use pelo menos 8 caracteres, com letra e número.</p>
+        </section>
+    </main>
+    <script src="/assets/js/change-password.js?v=2.3.0"></script>
+</body>
+</html>

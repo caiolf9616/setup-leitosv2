@@ -1,0 +1,69 @@
+<aside id="app-sidebar" class="sidebar">
+
+    <div class="sidebar-logo">
+
+        <img src="./img/logo-hm.png" alt="Hospital de Messejana">
+
+        <h2>Controle de Leitos</h2>
+
+        <span>Hospital de Messejana</span>
+
+        <button class="toggle-sidebar" type="button" aria-label="Recolher menu" title="Recolher menu">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+    </div>
+
+    <nav class="sidebar-menu">
+
+        <a href="/dashboard" class="menu-item active">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="/leitos" class="menu-item">
+            <i class="fa-solid fa-bed"></i>
+            <span>Leitos</span>
+        </a>
+
+        <a href="/pendencias" class="menu-item">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Pendências</span>
+        </a>
+
+        <a href="/relatorio" class="menu-item">
+            <i class="fa-solid fa-file-lines"></i>
+            <span>Relatórios</span>
+        </a>
+
+        <a href="/usuarios" class="menu-item" data-user-manager-only>
+            <i class="fa-solid fa-users-gear"></i>
+            <span>Usuários</span>
+        </a>
+
+        <a href="/painel" target="_blank" rel="noopener noreferrer" class="menu-item">
+            <i class="fa-solid fa-tv"></i>
+            <span>Painel</span>
+        </a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+
+        <div class="user-info">
+            <i class="fa-solid fa-user"></i>
+
+            <div>
+                <strong id="sidebarUserName">Carregando…</strong>
+                <small id="sidebarUserRole">Acesso autenticado</small>
+            </div>
+        </div>
+
+        <button class="logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Sair
+        </button>
+
+    </div>
+
+</aside>

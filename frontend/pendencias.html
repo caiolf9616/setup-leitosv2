@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <title>Pendências | Setup de Leitos</title>
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/sidebar.css?v=2.3.0">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/pendencias.css?v=1.0.1">
+    <link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css">
+</head>
+<body>
+    <div id="sidebar"></div>
+    <div class="main-content">
+        <div id="header"></div>
+        <main class="page-content pending-page">
+            <section class="page-heading">
+                <div>
+                    <p class="eyebrow">Acompanhamento operacional</p>
+                    <h1>Pendências dos leitos</h1>
+                    <p>Acompanhe o tempo no status e visualize como as pendências do Kanbam aparecerão.</p>
+                </div>
+                <button id="refreshPending" class="refresh-button" type="button">
+                    <i class="fa-solid fa-rotate"></i> Atualizar
+                </button>
+            </section>
+
+            <section class="integration-banner" aria-label="Situação da integração">
+                <span class="integration-icon"><i class="fa-solid fa-plug-circle-bolt"></i></span>
+                <div>
+                    <strong>Integração com o Kanbam preparada para a próxima etapa</strong>
+                    <p>Os tempos abaixo já são calculados pelo Setup. Motivo, setor, prioridade e previsão serão preenchidos quando a API do Kanbam for conectada.</p>
+                </div>
+                <span class="integration-status">Aguardando integração</span>
+            </section>
+
+            <p id="pendingMessage" class="pending-message" role="status">Carregando leitos…</p>
+
+            <section class="summary-grid" aria-label="Resumo das pendências">
+                <article class="summary-card"><span class="summary-icon tracked"><i class="fa-solid fa-bed"></i></span><div><span>Leitos acompanhados</span><strong id="trackedBeds">—</strong><small>Alta, desocupado ou apto</small></div></article>
+                <article class="summary-card"><span class="summary-icon warning"><i class="fa-solid fa-clock"></i></span><div><span>Tempo excedido</span><strong id="overdueBeds">—</strong><small>Conforme limite do status</small></div></article>
+                <article class="summary-card"><span class="summary-icon discharge"><i class="fa-solid fa-arrow-right-from-bracket"></i></span><div><span>Alta acima de 1h</span><strong id="highOverdue">—</strong><small>Aguardando desocupação</small></div></article>
+                <article class="summary-card"><span class="summary-icon cleaning"><i class="fa-solid fa-broom"></i></span><div><span>Desocupado acima de 1h</span><strong id="vacatedOverdue">—</strong><small>Aguardando preparação</small></div></article>
+            </section>
+
+            <section class="filter-panel">
+                <label>Unidade<select id="pendingUnit"><option value="">Todas as unidades</option></select></label>
+                <label>Status<select id="pendingStatus"><option value="">Todos os status</option><option value="alta">Alta / Transferência</option><option value="desocupado">Desocupado</option><option value="apto">Apto</option></select></label>
+                <label>Criticidade<select id="pendingCritical"><option value="">Todas</option><option value="overdue">Tempo excedido</option><option value="normal">Dentro do limite</option></select></label>
+            </section>
+
+            <section class="pending-panel">
+                <div class="panel-heading">
+                    <div><h2>Acompanhamento por leito</h2><p>Os dados operacionais são reais; os campos do Kanbam permanecem identificados até a integração.</p></div>
+                    <strong id="pendingCount">— leitos</strong>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Unidade / leito</th><th>Status</th><th>Tempo</th><th>Pendência no Kanbam</th><th>Setor</th><th>Prioridade</th><th>Previsão</th><th>Ação</th></tr></thead>
+                        <tbody id="pendingRows"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+        <div id="footer"></div>
+    </div>
+    <script src="./assets/js/auth.js?v=2.5.0"></script>
+    <script src="./assets/js/layout.js?v=2.5.0"></script>
+    <script src="./assets/js/sidebar.js"></script>
+    <script src="./assets/js/pendencias.js?v=1.0.1"></script>
+</body>
+</html>

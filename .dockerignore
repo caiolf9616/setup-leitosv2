@@ -1,0 +1,14 @@
+.git
+.venv
+**/__pycache__
+**/*.py[cod]
+backend/.env
+backend/.env.production
+.env
+backend/*.db
+backend/.pytest_cache
+backend/tests
+docs
+deploy/backups
+deploy/certs
+deploy/releases

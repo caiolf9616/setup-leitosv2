@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+pytest-cache-files-*/
+
+backend/.env
+backend/.env.production
+.env
+backend/*.db
+backend/*.db-*
+deploy/releases/
+deploy/backups/
+deploy/certs/
+
+# Copias locais de configuracoes de producao podem conter segredos.
+backend/.env.production.*
+
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store

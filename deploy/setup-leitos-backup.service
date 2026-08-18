@@ -1,0 +1,9 @@
+[Unit]
+Description=Backup diário do PostgreSQL do Setup de Leitos
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/setup-leitos
+ExecStart=/opt/setup-leitos/deploy/backup.sh

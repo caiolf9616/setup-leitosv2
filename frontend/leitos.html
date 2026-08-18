@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <title>Registro de leitos</title>
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/sidebar.css?v=2.3.0">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/leitos.css?v=2.8.1">
+    <link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css">
+</head>
+
+<body>
+    <div id="sidebar"></div>
+    <div class="main-content">
+        <div id="header"></div>
+        <main class="bed-registration">
+            <section class="page-heading">
+                <div>
+                    <p class="eyebrow">Atualização assistencial</p>
+                    <h1>Registro de leitos</h1>
+                    <p>Selecione uma unidade, registre o status ou bloqueie temporariamente um leito para controle interno.</p>
+                </div><span id="registrationUser" class="user-chip"></span>
+            </section>
+            <div id="feedback" class="feedback" role="alert" hidden></div>
+            <section class="registration-layout">
+                <div class="panel beds-panel">
+                    <div class="panel-title">
+                        <div>
+                            <h2>Leitos</h2>
+                            <p id="bedCounter">Carregando unidades…</p>
+                        </div>
+                        <div class="bed-filters">
+                            <label class="filter-label">Unidade<select id="unitSelect">
+                                    <option value="">Selecione uma unidade</option>
+                                </select></label>
+                        </div>
+                    </div>
+                    <div id="bedsGrid" class="beds-grid" aria-live="polite"></div>
+                </div>
+                <dialog id="eventDialog" class="event-dialog">
+                  <div class="panel event-panel">
+                    <div class="event-modal-header"><div><p class="eyebrow">Atualização do leito</p><h2>Registrar evento</h2></div><button id="closeEventDialog" class="modal-close" type="button" aria-label="Fechar janela"><i class="fa-solid fa-xmark"></i></button></div>
+                    <p id="selectedBedText" class="selected-bed">Escolha um leito para começar.</p>
+                    <p id="statusFlowHint" class="status-flow-hint">Selecione o novo status do leito.</p>
+                    <form id="eventForm">
+                        <fieldset id="eventOptions" disabled>
+                            <legend>Novo status</legend><label class="event-option alta"><input type="radio"
+                                    name="eventType" value="alta"><span><strong>Alta</strong><small>Paciente recebeu
+                                        alta</small></span></label><label class="event-option desocupado"><input
+                                    type="radio" name="eventType"
+                                    value="desocupado"><span><strong>Desocupado</strong><small>Leito liberado para
+                                        limpeza</small></span></label><label class="event-option apto"><input
+                                    type="radio" name="eventType"
+                                    value="apto"><span><strong>Apto</strong><small>Disponível para nova
+                                        internação</small></span></label><label class="event-option ocupado"><input
+                                    type="radio" name="eventType"
+                                    value="ocupado"><span><strong>Ocupado</strong><small>Leito em
+                                        uso</small></span></label>
+                        </fieldset><label class="datetime-label">Data e hora do evento<input id="occurredAt"
+                                type="datetime-local"></label><label class="current-time"><input id="useCurrentTime"
+                                type="checkbox" checked> Usar data e hora atuais</label><button id="saveEvent"
+                            class="primary-button" type="submit" disabled><i class="fa-solid fa-check"></i> Registrar
+                            evento</button>
+                    </form>
+                  </div>
+                </dialog>
+                <dialog id="blockDialog" class="event-dialog confirmation-dialog" aria-labelledby="blockDialogTitle">
+                    <div class="panel confirmation-panel">
+                        <div class="confirmation-icon" aria-hidden="true"><i class="fa-solid fa-lock"></i></div>
+                        <p id="blockDialogEyebrow" class="eyebrow">Controle interno</p>
+                        <h2 id="blockDialogTitle">Bloquear leito?</h2>
+                        <p id="blockDialogText" class="confirmation-text"></p>
+                        <div class="confirmation-actions">
+                            <button id="cancelBlockChange" class="secondary-button" type="button">Cancelar</button>
+                            <button id="confirmBlockChange" class="primary-button danger" type="button">Sim, bloquear</button>
+                        </div>
+                    </div>
+                </dialog>
+            </section>
+        </main>
+        <div id="footer"></div>
+    </div>
+
+    <div class="version">v2.8.1</div>
+    
+    <script src="./assets/js/auth.js?v=2.5.0"></script>
+    <script src="./assets/js/layout.js?v=2.4.0"></script>
+    <script src="./assets/js/sidebar.js"></script>
+    <script src="./assets/js/leitos.js?v=2.9.0"></script>
+</body>
+
+</html>
